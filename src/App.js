@@ -7,12 +7,14 @@ import 'js-cloudimage-360-view/dist/index'
 import './App.css';
 import BTGlasses from './Glasses/BTGlasses';
 import BTCar from './Car/BTCar';
+import BTOanTuTi from './BTRedux/OanTuTi/BTOanTuTi';
 
 function App() {
   return (
     <div className="App">
-      <BTGlasses/>
+      {/* <BTGlasses/> */}
       {/* <BTCar/> */}
+      <BTOanTuTi/>
     </div>
   );
 }
