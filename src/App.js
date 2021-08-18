@@ -8,13 +8,15 @@ import './App.css';
 import BTGlasses from './Glasses/BTGlasses';
 import BTCar from './Car/BTCar';
 import BTOanTuTi from './BTRedux/OanTuTi/BTOanTuTi';
+import BTCheckOnline from './CheckOnline/BTCheckOnline';
 
 function App() {
   return (
     <div className="App">
       {/* <BTGlasses/> */}
       {/* <BTCar/> */}
-      <BTOanTuTi/>
+      {/* <BTOanTuTi/> */}
+      <BTCheckOnline />
     </div>
   );
 }
