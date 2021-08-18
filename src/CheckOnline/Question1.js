@@ -1,50 +1,48 @@
-import axios from 'axios'
-import { get } from 'jquery'
+
 import React, { Component } from 'react'
 
 export default class Question1 extends Component {
     state = {
-        listquestion: []
+        exact: ''
     }
-    componentDidMount() {
-        axios('https://5bd2959ac8f9e400130cb7e9.mockapi.io/api/questions', get)
-            .then((res) => {
-                console.log(res.data)
-                this.setState({
-                    listquestion: res.data
-                })
-            }).catch((err) => {
-                console.log(err)
-            })
-    }
+    handleChange = event => {
+        const { name, value } = event.target;
+        if (value === 'Đất')
+            this.setState({
+                [name]: value,
+            });
+    };
 
     renderdsquestion = () => {
-        const listquestion1 = this.state.listquestion.filter(item => item.questionType === 1);
+        const { listquestion } = this.props;
+        const listquestion1 = listquestion.filter(item => item.questionType === 1);
         return listquestion1.map((ques) => {
-            return (<div key={ques.id}>
+            return <form key={ques.id}><div >
                 <h3>{ques.id}. {ques.content}</h3>
-            </div>
-            )
-        })
-    }
-    renderdsanswers = () => {
-        let listquestion1 = this.state.listquestion.filter(item => item.questionType === 1);
-        return listquestion1.map((ques) => {
-            return ques.answers.map((ans) => {
-                return <div className="form-check">
-                    <input className="form-check-input" type="radio" name="flexRadioDefault" id={ans.id} />
-                    <label className="form-check-label" htmlFor={ans.id}>
+                {ques.answers.map(ans => {
+                    return <div><input
+                        id={ans.id}
+                        value={ans.content}
+                        exact={ans.exact}
+                        name="answers"
+                        type="radio"
+                        onChange={this.handleChange}
+                    />
                         {ans.content}
-                    </label>
-                </div>
-            })
+                    </div>
+
+                })}
+            </div>
+            </form>
+
+
         })
     }
+
     render() {
         return (
             <div>
                 {this.renderdsquestion()}
-                {this.renderdsanswers()}
             </div>
         )
     }
