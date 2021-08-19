@@ -5,7 +5,8 @@ import axios from 'axios'
 import { get } from 'jquery'
 export default class BTCheckOnline extends Component {
     state = {
-        listquestion: []
+        listquestion: [],
+
     }
     componentDidMount() {
         axios('https://5bd2959ac8f9e400130cb7e9.mockapi.io/api/questions', get)
@@ -23,6 +24,7 @@ export default class BTCheckOnline extends Component {
             <div>
                 <Question1 listquestion={this.state.listquestion} />
                 <Question2 listquestion={this.state.listquestion} />
+                <button>Submit</button>
             </div>
         )
     }
